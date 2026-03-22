@@ -1,29 +1,26 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>AURUM — Or & Diamants de Prestige</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet"/>
+  <meta name="description" content="Damien Gold & Diamond - Expertise en or, diamants et bijoux de prestige"/>
+  <link rel="shortcut icon" href="assets/images/logo.png" type="image/png">
+  <title>Damien Gold & Diamond</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600;900&display=swap" rel="stylesheet"/>
   <style>
     :root {
       --gold: #C9A84C;
       --gold-light: #E8CC7A;
       --gold-pale: #F5E6B8;
       --gold-deep: #8B6914;
-      --black: #0A0A08;
-      --dark: #111109;
-      --dark2: #1A1A14;
-      --smoke: #2A2A20;
+      --black: #080807;
+      --dark: #0F0F0C;
+      --dark2: #161612;
       --cream: #F7F0DC;
       --white: #FDFAF0;
-      --diamond: #D4F1FF;
     }
-
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
-
     body {
       background: var(--black);
       color: var(--cream);
@@ -32,1106 +29,418 @@
       cursor: none;
     }
 
-    /* CUSTOM CURSOR */
-    .cursor {
-      position: fixed;
-      width: 12px; height: 12px;
-      background: var(--gold);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9999;
-      transform: translate(-50%, -50%);
-      transition: transform 0.1s, width 0.3s, height 0.3s, background 0.3s;
-    }
-    .cursor-ring {
-      position: fixed;
-      width: 36px; height: 36px;
-      border: 1px solid var(--gold-light);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9998;
-      transform: translate(-50%, -50%);
-      transition: transform 0.18s ease, width 0.3s, height 0.3s;
-      opacity: 0.6;
-    }
+    /* CURSOR */
+    .cursor { position: fixed; width: 10px; height: 10px; background: var(--gold); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); transition: width .3s, height .3s; }
+    .cursor-ring { position: fixed; width: 34px; height: 34px; border: 1px solid rgba(201,168,76,.5); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%,-50%); }
 
-    /* GRAIN OVERLAY */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
-      opacity: 0.03;
-      pointer-events: none;
-      z-index: 1000;
-    }
+    /* GRAIN */
+    body::after { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); opacity:.025; pointer-events:none; z-index:999; }
 
     /* NAV */
     nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 28px 60px;
-      z-index: 100;
-      background: linear-gradient(to bottom, rgba(10,10,8,0.9), transparent);
+      position: fixed; top: 0; left: 0; right: 0;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 26px 64px;
+      z-index: 200;
+      background: linear-gradient(to bottom, rgba(8,8,7,.95) 0%, transparent 100%);
     }
-    .nav-logo {
-      font-family: 'Cinzel', serif;
-      font-size: 22px;
-      font-weight: 900;
-      letter-spacing: 0.3em;
-      color: var(--gold);
-      text-decoration: none;
-    }
-    .nav-links {
-      display: flex;
-      gap: 40px;
-      list-style: none;
-    }
-    .nav-links a {
-      font-family: 'Cinzel', serif;
-      font-size: 11px;
-      font-weight: 400;
-      letter-spacing: 0.2em;
-      color: var(--gold-pale);
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-    .nav-links a:hover { color: var(--gold-light); }
-    .nav-contact-btn {
-      font-family: 'Cinzel', serif;
-      font-size: 11px;
-      letter-spacing: 0.15em;
-      color: var(--black);
-      background: var(--gold);
-      padding: 10px 24px;
-      border: none;
-      cursor: none;
-      transition: background 0.3s;
-      text-decoration: none;
-    }
-    .nav-contact-btn:hover { background: var(--gold-light); }
+    .nav-logo { font-family:'Cinzel',serif; font-size:15px; font-weight:900; letter-spacing:.35em; background:linear-gradient(135deg,var(--gold),var(--gold-light)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; text-decoration:none; }
+    .nav-links { display:flex; gap:40px; list-style:none; }
+    .nav-links a { font-family:'Cinzel',serif; font-size:10px; letter-spacing:.22em; color:rgba(247,240,220,.7); text-decoration:none; transition:color .3s; }
+    .nav-links a:hover { color:var(--gold-light); }
+    .nav-btn { font-family:'Cinzel',serif; font-size:10px; letter-spacing:.18em; color:var(--black); background:linear-gradient(135deg,var(--gold),var(--gold-light)); padding:11px 28px; text-decoration:none; cursor:none; transition:opacity .3s; }
+    .nav-btn:hover { opacity:.85; }
 
     /* HERO */
     .hero {
-      position: relative;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      overflow: hidden;
+      position: relative; height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; overflow: hidden;
     }
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 80% 60% at 50% 40%, rgba(201,168,76,0.12) 0%, transparent 70%),
-        radial-gradient(ellipse 40% 40% at 20% 80%, rgba(201,168,76,0.06) 0%, transparent 60%),
-        radial-gradient(ellipse 50% 50% at 80% 20%, rgba(212,241,255,0.04) 0%, transparent 60%),
-        var(--black);
+    .hero-img {
+      position: absolute; inset: 0;
+      background: url('https://images.unsplash.com/photo-1610375461246-83df859d849d?w=1800&q=80') center/cover no-repeat;
     }
-    .hero-lines {
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(201,168,76,0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(201,168,76,0.05) 1px, transparent 1px);
-      background-size: 80px 80px;
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom,
+        rgba(8,8,7,.65) 0%,
+        rgba(8,8,7,.40) 40%,
+        rgba(8,8,7,.75) 80%,
+        rgba(8,8,7,1) 100%);
     }
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      animation: heroFadeIn 1.8s ease forwards;
-    }
-    @keyframes heroFadeIn {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .hero-eyebrow {
-      font-family: 'Cinzel', serif;
-      font-size: 11px;
-      font-weight: 400;
-      letter-spacing: 0.5em;
-      color: var(--gold);
-      margin-bottom: 30px;
-      opacity: 0;
-      animation: heroFadeIn 1s 0.3s ease forwards;
-    }
-    .hero-title {
-      font-family: 'Cinzel', serif;
-      font-size: clamp(52px, 8vw, 110px);
-      font-weight: 900;
-      line-height: 0.9;
-      letter-spacing: 0.05em;
-      background: linear-gradient(135deg, var(--gold-deep) 0%, var(--gold) 35%, var(--gold-light) 50%, var(--gold) 65%, var(--gold-deep) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 20px;
-      opacity: 0;
-      animation: heroFadeIn 1s 0.5s ease forwards;
-    }
-    .hero-subtitle {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-size: clamp(16px, 2.5vw, 26px);
-      color: var(--cream);
-      font-weight: 300;
-      letter-spacing: 0.1em;
-      margin-bottom: 60px;
-      opacity: 0;
-      animation: heroFadeIn 1s 0.7s ease forwards;
-    }
-    .hero-ctas {
-      display: flex;
-      gap: 20px;
-      justify-content: center;
-      opacity: 0;
-      animation: heroFadeIn 1s 0.9s ease forwards;
-    }
-    .btn-primary {
-      font-family: 'Cinzel', serif;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      color: var(--black);
-      background: linear-gradient(135deg, var(--gold), var(--gold-light), var(--gold));
-      padding: 16px 40px;
-      border: none;
-      cursor: none;
-      text-decoration: none;
-      display: inline-block;
-      transition: transform 0.3s, box-shadow 0.3s;
-      box-shadow: 0 0 30px rgba(201,168,76,0.3);
-    }
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 40px rgba(201,168,76,0.5);
-    }
-    .btn-secondary {
-      font-family: 'Cinzel', serif;
-      font-size: 12px;
-      font-weight: 400;
-      letter-spacing: 0.2em;
-      color: var(--gold);
-      background: transparent;
-      padding: 16px 40px;
-      border: 1px solid rgba(201,168,76,0.4);
-      cursor: none;
-      text-decoration: none;
-      display: inline-block;
-      transition: border-color 0.3s, color 0.3s;
-    }
-    .btn-secondary:hover { border-color: var(--gold); color: var(--gold-light); }
+    .hero-glow { position: absolute; inset: 0; background: radial-gradient(ellipse 70% 50% at 50% 50%, rgba(201,168,76,.1), transparent 70%); }
+    .hero-content { position:relative; z-index:2; }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(32px)} to{opacity:1;transform:translateY(0)} }
+    .eyebrow { font-family:'Cinzel',serif; font-size:10px; letter-spacing:.55em; color:var(--gold); margin-bottom:28px; display:block; opacity:0; animation:fadeUp .9s .3s ease forwards; }
+    .hero-title { font-family:'Cinzel',serif; font-size:clamp(10px,10vw,50px); font-weight:900; line-height:.85; letter-spacing:.06em; background:linear-gradient(150deg,var(--gold-deep) 0%,var(--gold) 30%,var(--gold-light) 50%,var(--gold) 70%,var(--gold-deep) 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; margin-bottom:18px; opacity:0; animation:fadeUp .9s .5s ease forwards; }
+    .hero-sub { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:clamp(17px,2.5vw,28px); font-weight:300; letter-spacing:.12em; color:rgba(247,240,220,.9); margin-bottom:50px; opacity:0; animation:fadeUp .9s .7s ease forwards; }
+    .hero-ctas { display:flex; gap:18px; justify-content:center; opacity:0; animation:fadeUp .9s .9s ease forwards; }
+    .btn-gold { font-family:'Cinzel',serif; font-size:11px; font-weight:600; letter-spacing:.22em; color:var(--black); background:linear-gradient(135deg,var(--gold),var(--gold-light),var(--gold)); padding:15px 38px; text-decoration:none; cursor:none; transition:box-shadow .3s,transform .3s; box-shadow:0 0 28px rgba(201,168,76,.35); display:inline-block; }
+    .btn-gold:hover { transform:translateY(-2px); box-shadow:0 8px 36px rgba(201,168,76,.55); }
+    .btn-outline { font-family:'Cinzel',serif; font-size:11px; letter-spacing:.22em; color:var(--gold); background:transparent; padding:15px 38px; border:1px solid rgba(201,168,76,.4); text-decoration:none; cursor:none; transition:border-color .3s; display:inline-block; }
+    .btn-outline:hover { border-color:var(--gold); }
+    .scroll-hint { position:absolute; bottom:38px; left:50%; transform:translateX(-50%); text-align:center; opacity:0; animation:fadeUp .9s 1.3s ease forwards; }
+    .scroll-hint span { font-family:'Cinzel',serif; font-size:9px; letter-spacing:.4em; color:var(--gold); display:block; margin-bottom:10px; }
+    .scroll-line { width:1px; height:48px; background:linear-gradient(to bottom,var(--gold),transparent); margin:0 auto; animation:pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:.3} 50%{opacity:1} }
 
-    .hero-scroll {
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-      opacity: 0;
-      animation: heroFadeIn 1s 1.4s ease forwards;
-    }
-    .hero-scroll span {
-      font-family: 'Cinzel', serif;
-      font-size: 9px;
-      letter-spacing: 0.4em;
-      color: var(--gold);
-    }
-    .scroll-line {
-      width: 1px; height: 50px;
-      background: linear-gradient(to bottom, var(--gold), transparent);
-      animation: scrollPulse 2s infinite;
-    }
-    @keyframes scrollPulse {
-      0%, 100% { opacity: 0.3; transform: scaleY(1); }
-      50% { opacity: 1; transform: scaleY(1.2); }
-    }
+    /* STATS */
+    .stats-band { display:grid; grid-template-columns:repeat(4,1fr); background:var(--dark); border-top:1px solid rgba(201,168,76,.12); border-bottom:1px solid rgba(201,168,76,.12); }
+    .stat { padding:44px 30px; text-align:center; border-right:1px solid rgba(201,168,76,.08); }
+    .stat:last-child { border-right:none; }
+    .stat-n { font-family:'Cinzel',serif; font-size:clamp(32px,4vw,58px); font-weight:900; background:linear-gradient(135deg,var(--gold),var(--gold-light)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; display:block; }
+    .stat-l { font-family:'Cinzel',serif; font-size:9px; letter-spacing:.35em; color:rgba(247,240,220,.45); margin-top:6px; display:block; }
 
-    /* FLOATING GEMS */
-    .gem {
-      position: absolute;
-      pointer-events: none;
-      animation: gemFloat linear infinite;
-      opacity: 0.15;
-    }
-    @keyframes gemFloat {
-      0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-      5% { opacity: 0.15; }
-      95% { opacity: 0.15; }
-      100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
-    }
-
-    /* SECTION GENERAL */
-    section { position: relative; }
-    .section-label {
-      font-family: 'Cinzel', serif;
-      font-size: 10px;
-      font-weight: 400;
-      letter-spacing: 0.5em;
-      color: var(--gold);
-      margin-bottom: 16px;
-      display: block;
-    }
-    .section-title {
-      font-family: 'Cinzel', serif;
-      font-size: clamp(28px, 4vw, 52px);
-      font-weight: 600;
-      color: var(--white);
-      margin-bottom: 24px;
-      line-height: 1.1;
-    }
-    .section-title em {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-weight: 300;
-      color: var(--gold);
-    }
-    .section-text {
-      font-size: clamp(15px, 1.5vw, 18px);
-      line-height: 1.9;
-      color: rgba(247,240,220,0.7);
-      font-weight: 300;
-    }
-    .gold-divider {
-      width: 60px; height: 1px;
-      background: linear-gradient(to right, transparent, var(--gold), transparent);
-      margin: 0 auto 60px;
-    }
-
-    /* CHIFFRES */
-    .stats {
-      background: var(--dark);
-      padding: 80px 60px;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2px;
-      border-top: 1px solid rgba(201,168,76,0.15);
-      border-bottom: 1px solid rgba(201,168,76,0.15);
-    }
-    .stat {
-      padding: 40px;
-      text-align: center;
-      border-right: 1px solid rgba(201,168,76,0.1);
-      position: relative;
-    }
-    .stat:last-child { border-right: none; }
-    .stat-number {
-      font-family: 'Cinzel', serif;
-      font-size: clamp(36px, 4vw, 60px);
-      font-weight: 900;
-      background: linear-gradient(135deg, var(--gold), var(--gold-light));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      display: block;
-    }
-    .stat-label {
-      font-family: 'Cinzel', serif;
-      font-size: 10px;
-      letter-spacing: 0.3em;
-      color: rgba(247,240,220,0.5);
-      margin-top: 8px;
-      display: block;
-    }
+    /* SECTION HEADER */
+    .sec-header { text-align:center; margin-bottom:64px; }
+    .sec-label { font-family:'Cinzel',serif; font-size:9px; letter-spacing:.5em; color:var(--gold); display:block; margin-bottom:14px; }
+    .sec-title { font-family:'Cinzel',serif; font-size:clamp(28px,4vw,50px); font-weight:600; color:var(--white); line-height:1.1; }
+    .sec-title em { font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:300; color:var(--gold-light); }
+    .gold-bar { width:50px; height:1px; background:linear-gradient(to right,transparent,var(--gold),transparent); margin:22px auto 0; }
 
     /* COLLECTION */
-    .collection {
-      padding: 120px 60px;
-      background: var(--black);
-      text-align: center;
-    }
-    .collection-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
-      margin-top: 60px;
-    }
-    .product-card {
-      position: relative;
-      background: var(--dark2);
-      padding: 50px 40px;
-      border: 1px solid rgba(201,168,76,0.08);
-      transition: border-color 0.4s, transform 0.4s;
-      overflow: hidden;
-      cursor: none;
-    }
-    .product-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(201,168,76,0.05), transparent);
-      opacity: 0;
-      transition: opacity 0.4s;
-    }
-    .product-card:hover { border-color: rgba(201,168,76,0.4); transform: translateY(-4px); }
-    .product-card:hover::before { opacity: 1; }
-    .product-icon {
-      font-size: 52px;
-      display: block;
-      margin-bottom: 24px;
-      filter: drop-shadow(0 0 20px rgba(201,168,76,0.5));
-    }
-    .product-name {
-      font-family: 'Cinzel', serif;
-      font-size: 16px;
-      font-weight: 600;
-      letter-spacing: 0.15em;
-      color: var(--gold-light);
-      margin-bottom: 16px;
-    }
-    .product-desc {
-      font-size: 15px;
-      line-height: 1.8;
-      color: rgba(247,240,220,0.6);
-      font-weight: 300;
-      font-style: italic;
-    }
-    .product-badge {
-      display: inline-block;
-      margin-top: 20px;
-      font-family: 'Cinzel', serif;
-      font-size: 9px;
-      letter-spacing: 0.3em;
-      color: var(--gold);
-      border: 1px solid rgba(201,168,76,0.3);
-      padding: 6px 16px;
-    }
+    .collection { padding:110px 64px; background:var(--black); }
+    .coll-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:3px; }
+    .coll-card { position:relative; overflow:hidden; aspect-ratio:3/4; cursor:none; background:var(--dark2); }
+    .coll-card img { width:100%; height:100%; object-fit:cover; transition:transform .7s ease, filter .7s ease; filter:brightness(.7) saturate(.8); display:block; }
+    .coll-card:hover img { transform:scale(1.07); filter:brightness(.45) saturate(.6); }
+    .coll-card-overlay { position:absolute; inset:0; background:linear-gradient(to top, rgba(8,8,7,.95) 0%, rgba(8,8,7,.3) 55%, transparent 100%); display:flex; flex-direction:column; justify-content:flex-end; padding:36px 32px; transition:background .4s; }
+    .coll-card:hover .coll-card-overlay { background:linear-gradient(to top, rgba(8,8,7,.98) 0%, rgba(8,8,7,.65) 65%, rgba(8,8,7,.15) 100%); }
+    .coll-card-icon { font-size:30px; margin-bottom:10px; filter:drop-shadow(0 0 10px rgba(201,168,76,.6)); }
+    .coll-card-name { font-family:'Cinzel',serif; font-size:13px; font-weight:600; letter-spacing:.18em; color:var(--gold-light); margin-bottom:10px; }
+    .coll-card-desc { font-size:14px; line-height:1.75; color:rgba(247,240,220,.68); font-style:italic; font-weight:300; max-height:0; overflow:hidden; transition:max-height .5s ease; }
+    .coll-card:hover .coll-card-desc { max-height:130px; }
+    .coll-card-badge { display:inline-block; margin-top:14px; font-family:'Cinzel',serif; font-size:8px; letter-spacing:.3em; color:var(--gold); border:1px solid rgba(201,168,76,.3); padding:5px 14px; }
 
     /* ABOUT */
-    .about {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      min-height: 70vh;
-    }
-    .about-visual {
-      position: relative;
-      background: var(--dark);
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .about-visual-inner {
-      position: relative;
-      width: 300px; height: 300px;
-    }
-    .diamond-svg {
-      position: absolute;
-      inset: 0;
-      animation: rotateDiamond 20s linear infinite;
-    }
-    @keyframes rotateDiamond {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-    .diamond-center {
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 80px;
-      filter: drop-shadow(0 0 30px rgba(212,241,255,0.8));
-    }
-    .about-glow {
-      position: absolute;
-      width: 400px; height: 400px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(201,168,76,0.12), transparent 70%);
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-    }
-    .about-text {
-      padding: 80px;
-      background: var(--dark2);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-    .about-text .section-text { margin-bottom: 20px; }
-    .about-signature {
-      margin-top: 40px;
-      padding-top: 30px;
-      border-top: 1px solid rgba(201,168,76,0.2);
-      display: flex;
-      align-items: center;
-      gap: 20px;
-    }
-    .about-signature-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-size: 22px;
-      color: var(--gold-light);
-    }
-    .about-signature-title {
-      font-family: 'Cinzel', serif;
-      font-size: 10px;
-      letter-spacing: 0.2em;
-      color: rgba(247,240,220,0.5);
-    }
+    .about { display:grid; grid-template-columns:1fr 1fr; min-height:75vh; }
+    .about-left { position:relative; overflow:hidden; }
+    .about-left img { width:100%; height:100%; object-fit:cover; filter:brightness(.75) saturate(.75); display:block; }
+    .about-left-overlay { position:absolute; inset:0; background:linear-gradient(to right, transparent 55%, var(--dark2)); }
+    .about-right { background:var(--dark2); padding:90px 72px; display:flex; flex-direction:column; justify-content:center; }
+    .about-text { font-size:clamp(15px,1.4vw,18px); line-height:1.95; color:rgba(247,240,220,.68); font-weight:300; margin-bottom:20px; }
+    .about-sig { margin-top:42px; padding-top:28px; border-top:1px solid rgba(201,168,76,.18); }
+    .about-sig-name { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:22px; color:var(--gold-light); }
+    .about-sig-role { font-family:'Cinzel',serif; font-size:9px; letter-spacing:.25em; color:rgba(247,240,220,.4); margin-top:4px; }
 
-    /* PROCESSUS */
-    .process {
-      padding: 120px 60px;
-      background: var(--black);
-      text-align: center;
-    }
-    .process-steps {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 40px;
-      margin-top: 80px;
-      position: relative;
-    }
-    .process-steps::before {
-      content: '';
-      position: absolute;
-      top: 32px; left: 10%; right: 10%;
-      height: 1px;
-      background: linear-gradient(to right, transparent, var(--gold), transparent);
-    }
-    .step {
-      position: relative;
-      text-align: center;
-    }
-    .step-num {
-      width: 64px; height: 64px;
-      border: 1px solid var(--gold);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 24px;
-      font-family: 'Cinzel', serif;
-      font-size: 20px;
-      font-weight: 600;
-      color: var(--gold);
-      background: var(--black);
-      position: relative;
-      z-index: 1;
-    }
-    .step-title {
-      font-family: 'Cinzel', serif;
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.15em;
-      color: var(--white);
-      margin-bottom: 12px;
-    }
-    .step-desc {
-      font-size: 14px;
-      line-height: 1.7;
-      color: rgba(247,240,220,0.55);
-      font-style: italic;
-    }
+    /* IMAGE BREAK */
+    .img-break { height: 420px; position:relative; overflow:hidden; }
+    .img-break img { width:100%; height:130%; object-fit:cover; position:absolute; top:-15%; filter:brightness(.4) saturate(.5); }
+    .img-break-overlay { position:absolute; inset:0; background:linear-gradient(to right, rgba(8,8,7,.8) 0%, rgba(8,8,7,.25) 50%, rgba(8,8,7,.8) 100%); display:flex; align-items:center; justify-content:center; }
+    .img-break-quote { text-align:center; max-width:720px; padding:0 40px; }
+    .img-break-quote blockquote { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:clamp(22px,3vw,38px); font-weight:300; color:var(--cream); line-height:1.5; margin-bottom:20px; }
+    .img-break-quote cite { font-family:'Cinzel',serif; font-size:10px; letter-spacing:.35em; color:var(--gold); }
 
-    /* TEMOIGNAGES */
-    .testimonials {
-      background: var(--dark);
-      padding: 100px 60px;
-      border-top: 1px solid rgba(201,168,76,0.1);
-    }
-    .testimonials-title { text-align: center; margin-bottom: 60px; }
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 30px;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-    .testimonial {
-      background: var(--dark2);
-      padding: 40px;
-      border: 1px solid rgba(201,168,76,0.1);
-      position: relative;
-    }
-    .testimonial::before {
-      content: '"';
-      position: absolute;
-      top: 20px; left: 30px;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 80px;
-      color: rgba(201,168,76,0.15);
-      line-height: 1;
-    }
-    .testimonial-text {
-      font-style: italic;
-      font-size: 16px;
-      line-height: 1.8;
-      color: rgba(247,240,220,0.75);
-      margin-bottom: 24px;
-      position: relative;
-      z-index: 1;
-    }
-    .testimonial-author {
-      font-family: 'Cinzel', serif;
-      font-size: 11px;
-      letter-spacing: 0.2em;
-      color: var(--gold);
-    }
-    .stars { color: var(--gold); font-size: 14px; margin-bottom: 12px; }
+    
 
+    /* PROCESS */
+    .process { padding:110px 64px; background:var(--black); text-align:center; }
+    .process-steps { display:grid; grid-template-columns:repeat(4,1fr); gap:40px; margin-top:70px; position:relative; }
+    .process-steps::before { content:''; position:absolute; top:31px; left:12%; right:12%; height:1px; background:linear-gradient(to right,transparent,var(--gold),transparent); }
+    .step { text-align:center; }
+    .step-num { width:62px; height:62px; border:1px solid var(--gold); border-radius:50%; margin:0 auto 22px; display:flex; align-items:center; justify-content:center; font-family:'Cinzel',serif; font-size:18px; font-weight:600; color:var(--gold); background:var(--black); position:relative; z-index:1; }
+    .step-title { font-family:'Cinzel',serif; font-size:12px; font-weight:600; letter-spacing:.18em; color:var(--white); margin-bottom:12px; }
+    .step-desc { font-size:14px; line-height:1.8; color:rgba(247,240,220,.5); font-style:italic; }
+
+   
     /* CONTACT */
-    .contact {
-      background: var(--dark2);
-      padding: 120px 60px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .contact::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse 70% 50% at 50% 50%, rgba(201,168,76,0.07), transparent);
-      pointer-events: none;
-    }
-    .contact-inner {
-      position: relative;
-      z-index: 1;
-      max-width: 700px;
-      margin: 0 auto;
-    }
-    .contact-form {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-top: 50px;
-      text-align: left;
-    }
-    .form-group { display: flex; flex-direction: column; gap: 8px; }
-    .form-group.full { grid-column: 1 / -1; }
-    .form-group label {
-      font-family: 'Cinzel', serif;
-      font-size: 10px;
-      letter-spacing: 0.25em;
-      color: var(--gold);
-    }
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(201,168,76,0.2);
-      color: var(--cream);
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 16px;
-      padding: 14px 18px;
-      outline: none;
-      transition: border-color 0.3s;
-      resize: none;
-    }
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus { border-color: var(--gold); }
-    .form-group input::placeholder,
-    .form-group textarea::placeholder { color: rgba(247,240,220,0.3); }
-    .form-group select option { background: var(--dark2); }
-    .form-submit {
-      grid-column: 1 / -1;
-      background: linear-gradient(135deg, var(--gold-deep), var(--gold), var(--gold-light), var(--gold));
-      border: none;
-      color: var(--black);
-      font-family: 'Cinzel', serif;
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.3em;
-      padding: 18px;
-      cursor: none;
-      transition: opacity 0.3s, transform 0.3s;
-    }
-    .form-submit:hover { opacity: 0.9; transform: translateY(-1px); }
-
-    /* CONTACT INFO */
-    .contact-info {
-      display: flex;
-      justify-content: center;
-      gap: 60px;
-      margin-top: 60px;
-      padding-top: 50px;
-      border-top: 1px solid rgba(201,168,76,0.15);
-    }
-    .contact-info-item {
-      text-align: center;
-    }
-    .contact-info-icon { font-size: 24px; margin-bottom: 12px; display: block; }
-    .contact-info-label {
-      font-family: 'Cinzel', serif;
-      font-size: 9px;
-      letter-spacing: 0.3em;
-      color: var(--gold);
-      margin-bottom: 6px;
-      display: block;
-    }
-    .contact-info-value {
-      font-size: 15px;
-      color: var(--cream);
-      font-style: italic;
-    }
+    .contact { position:relative; overflow:hidden; }
+    .contact-bg { position:absolute; inset:0; }
+    .contact-bg img { width:100%; height:100%; object-fit:cover; filter:brightness(.18) saturate(.4); }
+    .contact-bg-overlay { position:absolute; inset:0; background:linear-gradient(to bottom, rgba(8,8,7,.75), rgba(8,8,7,.92)); }
+    .contact-inner { position:relative; z-index:2; padding:110px 64px; max-width:860px; margin:0 auto; text-align:center; }
+    .contact-form { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:50px; text-align:left; }
+    .fg { display:flex; flex-direction:column; gap:7px; }
+    .fg.full { grid-column:1/-1; }
+    .fg label { font-family:'Cinzel',serif; font-size:9px; letter-spacing:.28em; color:var(--gold); }
+    .fg input, .fg select, .fg textarea { background:rgba(255,255,255,.04); border:1px solid rgba(201,168,76,.18); color:var(--cream); font-family:'Cormorant Garamond',serif; font-size:16px; padding:13px 18px; outline:none; transition:border-color .3s; resize:none; }
+    .fg input:focus,.fg select:focus,.fg textarea:focus { border-color:var(--gold); }
+    .fg input::placeholder,.fg textarea::placeholder { color:rgba(247,240,220,.3); }
+    .fg select option { background:var(--dark2); }
+    .form-btn { grid-column:1/-1; background:linear-gradient(135deg,var(--gold-deep),var(--gold),var(--gold-light),var(--gold)); border:none; color:var(--black); font-family:'Cinzel',serif; font-size:12px; font-weight:600; letter-spacing:.3em; padding:18px; cursor:none; transition:opacity .3s,transform .3s; }
+    .form-btn:hover { opacity:.9; transform:translateY(-1px); }
+    .contact-info-row { display:flex; justify-content:center; gap:56px; margin-top:56px; padding-top:44px; border-top:1px solid rgba(201,168,76,.15); flex-wrap:wrap; }
+    .ci { text-align:center; }
+    .ci-icon { font-size:22px; margin-bottom:10px; display:block; }
+    .ci-label { font-family:'Cinzel',serif; font-size:9px; letter-spacing:.28em; color:var(--gold); display:block; margin-bottom:5px; }
+    .ci-val { font-size:15px; color:var(--cream); font-style:italic; }
 
     /* FOOTER */
-    footer {
-      background: var(--black);
-      padding: 50px 60px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-top: 1px solid rgba(201,168,76,0.1);
-    }
-    .footer-logo {
-      font-family: 'Cinzel', serif;
-      font-size: 20px;
-      font-weight: 900;
-      letter-spacing: 0.3em;
-      background: linear-gradient(135deg, var(--gold), var(--gold-light));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .footer-copy {
-      font-size: 13px;
-      color: rgba(247,240,220,0.35);
-      font-style: italic;
-    }
-    .footer-socials {
-      display: flex;
-      gap: 16px;
-    }
-    .footer-social {
-      width: 36px; height: 36px;
-      border: 1px solid rgba(201,168,76,0.25);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-      color: var(--gold);
-      transition: border-color 0.3s, background 0.3s;
-      text-decoration: none;
-      cursor: none;
-    }
-    .footer-social:hover { border-color: var(--gold); background: rgba(201,168,76,0.1); }
+    footer { background:var(--black); padding:48px 64px; display:flex; justify-content:space-between; align-items:center; border-top:1px solid rgba(201,168,76,.1); }
+    .footer-logo { font-family:'Cinzel',serif; font-size:20px; font-weight:900; letter-spacing:.35em; background:linear-gradient(135deg,var(--gold),var(--gold-light)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .footer-copy { font-size:13px; color:rgba(247,240,220,.3); font-style:italic; }
+    .footer-links { display:flex; gap:14px; }
+    .footer-link { width:36px; height:36px; border:1px solid rgba(201,168,76,.22); display:flex; align-items:center; justify-content:center; font-size:13px; color:var(--gold); transition:background .3s; text-decoration:none; cursor:none; }
+    .footer-link:hover { background:rgba(201,168,76,.1); }
 
-    /* ANIMATIONS SCROLL */
-    .reveal {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
-    .reveal-delay-4 { transition-delay: 0.4s; }
+    /* REVEAL */
+    .reveal { opacity:0; transform:translateY(36px); transition:opacity .85s ease, transform .85s ease; }
+    .reveal.in { opacity:1; transform:translateY(0); }
+    .d1{transition-delay:.12s}.d2{transition-delay:.24s}.d3{transition-delay:.36s}.d4{transition-delay:.48s}
 
-    /* BADGE LUXE */
-    .luxury-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      background: rgba(201,168,76,0.08);
-      border: 1px solid rgba(201,168,76,0.25);
-      padding: 10px 24px;
-      margin-bottom: 40px;
-    }
-    .luxury-badge span {
-      font-family: 'Cinzel', serif;
-      font-size: 10px;
-      letter-spacing: 0.3em;
-      color: var(--gold-pale);
-    }
-    .luxury-badge-dot {
-      width: 4px; height: 4px;
-      background: var(--gold);
-      border-radius: 50%;
-    }
-
-    @media (max-width: 900px) {
-      nav { padding: 20px 24px; }
-      .nav-links { display: none; }
-      .stats { grid-template-columns: repeat(2, 1fr); padding: 40px 24px; }
-      .stat { border-right: none; border-bottom: 1px solid rgba(201,168,76,0.1); }
-      .collection { padding: 80px 24px; }
-      .collection-grid { grid-template-columns: 1fr; }
-      .about { grid-template-columns: 1fr; }
-      .about-visual { min-height: 300px; }
-      .about-text { padding: 50px 24px; }
-      .process { padding: 80px 24px; }
-      .process-steps { grid-template-columns: repeat(2, 1fr); }
-      .process-steps::before { display: none; }
-      .testimonials { padding: 70px 24px; }
-      .testimonials-grid { grid-template-columns: 1fr; }
-      .contact { padding: 80px 24px; }
-      .contact-form { grid-template-columns: 1fr; }
-      .form-group.full { grid-column: 1; }
-      .form-submit { grid-column: 1; }
-      .contact-info { flex-direction: column; gap: 30px; }
-      footer { flex-direction: column; gap: 20px; text-align: center; }
+    @media(max-width:900px){
+      nav{padding:18px 22px;} .nav-links{display:none;}
+      .stats-band{grid-template-columns:repeat(2,1fr);}
+      .collection{padding:70px 20px;} .coll-grid{grid-template-columns:1fr;}
+      .about{grid-template-columns:1fr;} .about-left{height:300px;} .about-right{padding:50px 24px;}
+      .gallery{grid-template-columns:repeat(2,1fr);}
+      .process{padding:70px 20px;} .process-steps{grid-template-columns:repeat(2,1fr);} .process-steps::before{display:none;}
+      .testimonials{padding:70px 20px;} .testi-grid{grid-template-columns:1fr;}
+      .contact-inner{padding:70px 22px;} .contact-form{grid-template-columns:1fr;} .fg.full,.form-btn{grid-column:1;} .contact-info-row{gap:28px;}
+      footer{flex-direction:column;gap:18px;text-align:center;}
     }
   </style>
 </head>
 <body>
 
-  <div class="cursor" id="cursor"></div>
-  <div class="cursor-ring" id="cursorRing"></div>
+<div class="cursor" id="cur"></div>
+<div class="cursor-ring" id="curR"></div>
 
-  <!-- NAV -->
-  <nav>
-    <a href="#" class="nav-logo">AURUM</a>
-    <ul class="nav-links">
-      <li><a href="#collection">Collection</a></li>
-      <li><a href="#about">Notre Maison</a></li>
-      <li><a href="#process">Notre Processus</a></li>
-      <li><a href="#temoignages">Références</a></li>
-    </ul>
-    <a href="#contact" class="nav-contact-btn">CONSULTER</a>
-  </nav>
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Damien Gold & Diamond</a>
+  <ul class="nav-links">
+    <li><a href="#collection">À propos</a></li>
+    <li><a href="#about">Nos Services</a></li>
+    <li><a href="#galerie">Notre Expertise</a></li>
+    <li><a href="#temoignages">Nos Valeurs</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-btn">NOUS CONTACTER</a>
+</nav>
 
-  <!-- HERO -->
-  <section class="hero" id="accueil">
-    <div class="hero-bg"></div>
-    <div class="hero-lines"></div>
-
-    <!-- Floating gems -->
-    <div id="gems"></div>
-
-    <div class="hero-content">
-      <div class="luxury-badge">
-        <span class="luxury-badge-dot"></span>
-        <span>MAISON FONDÉE EN 1998</span>
-        <span class="luxury-badge-dot"></span>
-      </div>
-      <p class="hero-eyebrow">Excellence · Authenticité · Prestige</p>
-      <h1 class="hero-title">AURUM</h1>
-      <p class="hero-subtitle">Négoce d'Or & de Diamants de Haute Qualité</p>
-      <div class="hero-ctas">
-        <a href="#collection" class="btn-primary">DÉCOUVRIR LA COLLECTION</a>
-        <a href="#contact" class="btn-secondary">PRENDRE RENDEZ-VOUS</a>
-      </div>
-    </div>
-
-    <div class="hero-scroll">
-      <span>DÉCOUVRIR</span>
-      <div class="scroll-line"></div>
-    </div>
-  </section>
-
-  <!-- STATS -->
-  <div class="stats">
-    <div class="stat reveal">
-      <span class="stat-number" data-target="25">0</span>
-      <span class="stat-label">ANS D'EXPERTISE</span>
-    </div>
-    <div class="stat reveal reveal-delay-1">
-      <span class="stat-number" data-target="3200">0</span>
-      <span class="stat-label">CLIENTS SATISFAITS</span>
-    </div>
-    <div class="stat reveal reveal-delay-2">
-      <span class="stat-number" data-target="850">0</span>
-      <span class="stat-label">KG D'OR TRAITÉS</span>
-    </div>
-    <div class="stat reveal reveal-delay-3">
-      <span class="stat-number" data-target="15000">0</span>
-      <span class="stat-label">CARATS DIAMANTS</span>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-img"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <span class="eyebrow">Excellence · Authenticité · Prestige </span>
+    <h1 class="hero-title">Damien Gold & Diamond</h1>
+    <p class="hero-sub">Plus de 15 ans d’expérience dans l’expertise, le caratage et le commerce international d’or et de diamants.</p>
+    <div class="hero-ctas">
+      <a href="#collection" class="btn-gold">Demander une expertise</a>
+      <a href="#contact" class="btn-outline">Nous contacter</a>
     </div>
   </div>
+  <div class="scroll-hint">
+    <span>DÉFILER</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
 
-  <!-- COLLECTION -->
-  <section class="collection" id="collection">
-    <div class="reveal">
-      <span class="section-label">— Notre Sélection —</span>
-      <h2 class="section-title">Pierres & Métaux<br><em>d'Exception</em></h2>
-      <div class="gold-divider"></div>
-    </div>
-    <div class="collection-grid">
-      <div class="product-card reveal">
-        <span class="product-icon">🪙</span>
-        <div class="product-name">OR EN LINGOTS</div>
-        <p class="product-desc">Lingots certifiés 999.9‰ de pureté. Disponibles en format 1g, 5g, 10g, 100g, 250g, 500g et 1kg. Chaque lingot est accompagné de son certificat d'authenticité international.</p>
-        <span class="product-badge">DISPONIBLE</span>
-      </div>
-      <div class="product-card reveal reveal-delay-1">
-        <span class="product-icon">💎</span>
-        <div class="product-name">DIAMANTS CERTIFIÉS GIA</div>
-        <p class="product-desc">Diamants naturels de 0.30 à 10+ carats. Chaque pierre est certifiée par le GIA ou l'IGI, garantissant couleur, clarté, taille et poids exacts. Qualité investissement.</p>
-        <span class="product-badge">SUR COMMANDE</span>
-      </div>
-      <div class="product-card reveal reveal-delay-2">
-        <span class="product-icon">💍</span>
-        <div class="product-name">BIJOUX EN OR</div>
-        <p class="product-desc">Bracelets, colliers, bagues et pendentifs en or 18 et 24 carats. Travail artisanal de haute précision. Collections classiques et modernes pour toutes les occasions.</p>
-        <span class="product-badge">EN BOUTIQUE</span>
-      </div>
-      <div class="product-card reveal">
-        <span class="product-icon">📊</span>
-        <div class="product-name">OR D'INVESTISSEMENT</div>
-        <p class="product-desc">Conseil en placement sur les marchés des métaux précieux. Suivi personnalisé, analyses des tendances et accompagnement stratégique pour diversifier votre patrimoine.</p>
-        <span class="product-badge">SUR RDVH</span>
-      </div>
-      <div class="product-card reveal reveal-delay-1">
-        <span class="product-icon">🔍</span>
-        <div class="product-name">EXPERTISE & RACHAT</div>
-        <p class="product-desc">Service d'expertise pour vos bijoux et pièces d'or. Rachat au meilleur prix du marché. Estimation gratuite et confidentielle en rendez-vous privé.</p>
-        <span class="product-badge">GRATUIT</span>
-      </div>
-      <div class="product-card reveal reveal-delay-2">
-        <span class="product-icon">✨</span>
-        <div class="product-name">PIERRES PRÉCIEUSES</div>
-        <p class="product-desc">Rubis, émeraudes, saphirs et autres pierres de couleur d'origine certifiée. Sélection rigoureuse issue des meilleures mines mondiales. Accompagnement sur mesure.</p>
-        <span class="product-badge">EXCLUSIVE</span>
-      </div>
-    </div>
-  </section>
+<!-- STATS -->
+<div class="stats-band">
+  <div class="stat reveal"><span class="stat-n" data-t="15">0</span><span class="stat-l">ANS D'EXPERTISE</span></div>
+  <div class="stat reveal d1"><span class="stat-n" data-t="3200">0</span><span class="stat-l">CLIENTS SATISFAITS</span></div>
+  <div class="stat reveal d2"><span class="stat-n" data-t="850">0</span><span class="stat-l">KG D'OR TRAITÉS</span></div>
+  <div class="stat reveal d3"><span class="stat-n" data-t="15000">0</span><span class="stat-l">CARATS DIAMANTS</span></div>
+</div>
 
-  <!-- ABOUT -->
-  <section class="about" id="about">
-    <div class="about-visual">
-      <div class="about-glow"></div>
-      <div class="about-visual-inner">
-        <svg class="diamond-svg" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="150" cy="150" r="140" stroke="rgba(201,168,76,0.15)" stroke-width="1"/>
-          <circle cx="150" cy="150" r="110" stroke="rgba(201,168,76,0.1)" stroke-width="1" stroke-dasharray="4 8"/>
-          <circle cx="150" cy="150" r="80" stroke="rgba(201,168,76,0.08)" stroke-width="1"/>
-          <path d="M150 10 L290 150 L150 290 L10 150 Z" stroke="rgba(201,168,76,0.3)" stroke-width="0.5" fill="none"/>
-          <path d="M150 50 L250 150 L150 250 L50 150 Z" stroke="rgba(201,168,76,0.2)" stroke-width="0.5" fill="none"/>
-        </svg>
-        <div class="diamond-center">💎</div>
-      </div>
-    </div>
-    <div class="about-text">
-      <span class="section-label">— Notre Maison —</span>
-      <h2 class="section-title" style="font-size:clamp(24px,3vw,42px);">Une <em>passion</em><br>transmise depuis<br>deux générations</h2>
-      <p class="section-text">Depuis 1998, la Maison AURUM s'est imposée comme une référence incontournable dans le négoce de métaux précieux et de pierres gemmes en Afrique de l'Ouest et au-delà.</p>
-      <p class="section-text" style="margin-top:16px;">Notre philosophie repose sur trois piliers fondamentaux : l'authenticité absolue de chaque pièce proposée, la transparence totale de nos transactions, et l'excellence du service offert à chacun de nos clients.</p>
-      <p class="section-text" style="margin-top:16px;">Chaque or que nous manipulons, chaque diamant que nous sélectionnons, est soumis à une inspection rigoureuse par nos experts certifiés afin de vous garantir la pureté et la valeur réelles.</p>
-      <div class="about-signature">
-        <div>
-          <div class="about-signature-name">Mamadou Koné</div>
-          <div class="about-signature-title">FONDATEUR & DIRECTEUR GÉNÉRAL</div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- PROCESSUS -->
-  <section class="process" id="process">
-    <div class="reveal">
-      <span class="section-label">— Comment Ça Marche —</span>
-      <h2 class="section-title">Un Processus <em>Transparent</em></h2>
-      <div class="gold-divider"></div>
-    </div>
-    <div class="process-steps">
-      <div class="step reveal">
-        <div class="step-num">I</div>
-        <div class="step-title">CONSULTATION</div>
-        <p class="step-desc">Prenez rendez-vous pour une consultation privée et confidentielle avec l'un de nos experts.</p>
-      </div>
-      <div class="step reveal reveal-delay-1">
-        <div class="step-num">II</div>
-        <div class="step-title">EXPERTISE</div>
-        <p class="step-desc">Analyse approfondie de vos besoins et sélection des pièces correspondant à vos critères.</p>
-      </div>
-      <div class="step reveal reveal-delay-2">
-        <div class="step-num">III</div>
-        <div class="step-title">CERTIFICATION</div>
-        <p class="step-desc">Chaque transaction est accompagnée de certificats d'authenticité reconnus internationalement.</p>
-      </div>
-      <div class="step reveal reveal-delay-3">
-        <div class="step-num">IV</div>
-        <div class="step-title">LIVRAISON</div>
-        <p class="step-desc">Remise sécurisée et discrète dans notre écrin de présentation, avec suivi personnalisé après-vente.</p>
-      </div>
-    </div>
-  </section>
 
-  <!-- TEMOIGNAGES -->
-  <section class="testimonials" id="temoignages">
-    <div class="testimonials-title reveal">
-      <span class="section-label">— Ils Nous Font Confiance —</span>
-      <h2 class="section-title">Témoignages <em>Clients</em></h2>
-    </div>
-    <div class="testimonials-grid">
-      <div class="testimonial reveal">
-        <div class="stars">★★★★★</div>
-        <p class="testimonial-text">La Maison AURUM a su comprendre mes attentes dès notre première rencontre. Qualité irréprochable, authenticité garantie. Je leur fais confiance pour tous mes investissements en or depuis 8 ans.</p>
-        <div class="testimonial-author">AMADOU D. — ABIDJAN</div>
-      </div>
-      <div class="testimonial reveal reveal-delay-1">
-        <div class="stars">★★★★★</div>
-        <p class="testimonial-text">Expertise professionnelle, discrétion absolue et prix compétitifs. Les diamants que j'ai acquis sont accompagnés de leurs certificats GIA. Un service véritablement haut de gamme.</p>
-        <div class="testimonial-author">FATIMA K. — DAKAR</div>
-      </div>
-      <div class="testimonial reveal reveal-delay-2">
-        <div class="stars">★★★★★</div>
-        <p class="testimonial-text">J'ai fait expertiser et racheter mes bijoux de famille. Estimation juste, honnête, et traitement dans les 48h. Une maison que je recommande sans hésiter à mon entourage.</p>
-        <div class="testimonial-author">JEAN-PAUL M. — PARIS</div>
-      </div>
-    </div>
-  </section>
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-left">
+    <img src="assets/images/diamien.jpg"  walt="Diamien" width="900"/>
+    <div class="about-left-overlay"></div>
+  </div>
+  <div class="about-right">
+    <span class="sec-label">— Notre Maison —</span>
+    <h2 class="sec-title" style="font-size:clamp(26px,3vw,44px);text-align:left;margin-bottom:30px;">L’excellence au service<br>des <em>métaux précieux</em><br>et des pierres rares</h2>
+    <p class="about-text">Depuis plus de quinze ans, notre activité s’inscrit au cœur du secteur des métaux précieux et des pierres d’exception. Spécialisés dans l’expertise de bijoux, le caratage ainsi que le commerce international d’or et de diamants, nous mettons notre savoir-faire et notre expérience au service d’une clientèle exigeante.
 
-  <!-- CONTACT -->
-  <section class="contact" id="contact">
-    <div class="contact-inner">
-      <div class="reveal">
-        <span class="section-label">— Prendre Contact —</span>
-        <h2 class="section-title">Commençons Votre<br><em>Consultation Privée</em></h2>
-        <p class="section-text" style="max-width:500px;margin:0 auto;">Remplissez ce formulaire et l'un de nos experts vous contactera sous 24h pour organiser votre rendez-vous confidentiel.</p>
-      </div>
-      <form class="contact-form reveal" onsubmit="handleSubmit(event)">
-        <div class="form-group">
-          <label>PRÉNOM & NOM</label>
-          <input type="text" placeholder="Votre nom complet"/>
-        </div>
-        <div class="form-group">
-          <label>TÉLÉPHONE</label>
-          <input type="tel" placeholder="+225 07 XX XX XX XX"/>
-        </div>
-        <div class="form-group">
-          <label>EMAIL</label>
-          <input type="email" placeholder="votre@email.com"/>
-        </div>
-        <div class="form-group">
-          <label>INTÉRÊT</label>
-          <select>
-            <option value="">Sélectionner...</option>
-            <option>Or en Lingots</option>
-            <option>Diamants Certifiés</option>
-            <option>Bijoux en Or</option>
-            <option>Investissement</option>
-            <option>Expertise / Rachat</option>
-            <option>Pierres Précieuses</option>
-          </select>
-        </div>
-        <div class="form-group full">
-          <label>MESSAGE</label>
-          <textarea rows="4" placeholder="Décrivez votre projet ou votre besoin..."></textarea>
-        </div>
-        <button type="submit" class="form-submit">ENVOYER MA DEMANDE →</button>
-      </form>
-      <div class="contact-info reveal">
-        <div class="contact-info-item">
-          <span class="contact-info-icon">📍</span>
-          <span class="contact-info-label">ADRESSE</span>
-          <span class="contact-info-value">Plateau, Abidjan — Côte d'Ivoire</span>
-        </div>
-        <div class="contact-info-item">
-          <span class="contact-info-icon">📱</span>
-          <span class="contact-info-label">TÉLÉPHONE</span>
-          <span class="contact-info-value">+225 07 XX XX XX XX</span>
-        </div>
-        <div class="contact-info-item">
-          <span class="contact-info-icon">🕐</span>
-          <span class="contact-info-label">HORAIRES</span>
-          <span class="contact-info-value">Lun–Sam, 09h – 18h</span>
-        </div>
-      </div>
-    </div>
-  </section>
+Chaque pièce confiée fait l’objet d’une analyse rigoureuse permettant d’en déterminer l’authenticité, la pureté et la valeur. Grâce à une expertise approfondie et à des méthodes de caratage précises, nous garantissons des évaluations fiables conformes aux standards internationaux du marché des pierres précieuses et des métaux nobles.
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-logo">AURUM</div>
-    <p class="footer-copy">© 2025 Maison AURUM. Tous droits réservés. Or & Diamants de Prestige.</p>
-    <div class="footer-socials">
-      <a href="#" class="footer-social">f</a>
-      <a href="#" class="footer-social">in</a>
-      <a href="#" class="footer-social">✉</a>
-    </div>
-  </footer>
+Notre activité s’étend également au commerce international et aux opérations d’import-export d’or et de diamants. À travers un réseau de partenaires et de fournisseurs à l’international, nous facilitons des transactions sécurisées et confidentielles, tout en offrant une vision stratégique des opportunités du marché.
 
-  <script>
-    // Custom cursor
-    const cursor = document.getElementById('cursor');
-    const cursorRing = document.getElementById('cursorRing');
-    let mx = 0, my = 0, rx = 0, ry = 0;
-    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
-    function animateCursor() {
-      rx += (mx - rx) * 0.15;
-      ry += (my - ry) * 0.15;
-      cursor.style.left = mx + 'px';
-      cursor.style.top = my + 'px';
-      cursorRing.style.left = rx + 'px';
-      cursorRing.style.top = ry + 'px';
-      requestAnimationFrame(animateCursor);
+Fondé sur la discrétion, la rigueur et l’excellence, notre engagement est d’accompagner chaque client avec professionnalisme dans l’expertise, l’acquisition, la valorisation et la commercialisation de biens précieux.</p>
+   
+    <div class="about-sig">
+      <div class="about-sig-name">Mamadou Koné</div>
+      <div class="about-sig-role">FONDATEUR &amp; DIRECTEUR GÉNÉRAL · Damien Gold & Diamond</div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+<!-- COLLECTION -->
+<section class="collection" id="collection">
+  <div class="sec-header reveal">
+    <span class="sec-label">— Nos Services—</span>
+    <h2 class="sec-title">Métaux &amp; Pierres <em>d'Exception</em></h2>
+    <div class="gold-bar"></div>
+  </div>
+  <div class="coll-grid">
+    <div class="coll-card">
+  <img src="assets/images/bijoux.jpeg" width="70" alt="Expertise de bijoux"/>
+  <div class="coll-card-overlay">
+    <span class="coll-card-icon">🪙</span>
+    <div class="coll-card-name">EXPERTISE DE BIJOUX</div>
+    <p class="coll-card-desc">
+      Nous réalisons une expertise complète de vos bijoux afin d’en déterminer l’authenticité, l’état, la provenance et la valeur sur le marché. Chaque analyse est effectuée avec rigueur selon les standards professionnels.
+    </p>
+    <span class="coll-card-badge">DISPONIBLE</span>
+  </div>
+</div>
+
+<div class="coll-card reveal d1">
+  <img src="assets/images/caratage.jpg" width="70" alt="Caratage diamant"/>
+  <div class="coll-card-overlay">
+    <span class="coll-card-icon">💎</span>
+    <div class="coll-card-name">CARATAGE</div>
+    <p class="coll-card-desc">
+      Nous procédons au caratage précis de vos diamants et pierres précieuses afin d’évaluer leur pureté, leur poids et leur qualité. Nos méthodes respectent les normes internationales du secteur.
+    </p>
+    <span class="coll-card-badge">DISPONIBLE</span>
+  </div>
+</div>
+
+<div class="coll-card reveal d2">
+  <img src="assets/images/achatvente.jpg" width="70" alt="Achat vente or"/>
+  <div class="coll-card-overlay">
+    <span class="coll-card-icon">💍</span>
+    <div class="coll-card-name">ACHAT & VENTE</div>
+    <p class="coll-card-desc">
+      Nous accompagnons nos clients dans l’achat et la vente d’or, de diamants et de bijoux de valeur. Nous garantissons des transactions fiables, transparentes et adaptées aux conditions du marché.
+    </p>
+    <span class="coll-card-badge">SUR DEMANDE</span>
+  </div>
+</div>
+
+<div class="coll-card reveal">
+  <img src="assets/images/importexport.jpg" width="70" alt="Commerce international or"/>
+  <div class="coll-card-overlay">
+    <span class="coll-card-icon">📊</span>
+    <div class="coll-card-name">IMPORT - EXPORT</div>
+    <p class="coll-card-desc">
+      Grâce à notre réseau international, nous facilitons les opérations d’import-export d’or et de diamants en toute sécurité. Nous assurons un accompagnement stratégique et confidentiel pour chaque transaction.
+    </p>
+    <span class="coll-card-badge">SUR RDV</span>
+  </div>
+</div>
+  </div>
+</section>
+
+
+
+<!-- IMAGE BREAK CITATION -->
+<div class="img-break">
+  <img src="https://images.unsplash.com/photo-1607082349566-187342175e2f?w=1800&q=80" alt="Or fondu"/>
+  <div class="img-break-overlay">
+    <div class="img-break-quote reveal">
+      <blockquote>« L'or n'est pas seulement une matière précieuse —<br>c'est la mémoire du temps et la valeur de la confiance. »</blockquote>
+      <cite>— Damien Gold & Diamond</cite>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-bg">
+    <img src="https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?w=1800&q=80" alt="Bureau de prestige"/>
+    <div class="contact-bg-overlay"></div>
+  </div>
+  <div class="contact-inner reveal">
+    <span class="sec-label">— Prendre Contact —</span>
+    <h2 class="sec-title">Commençons Votre<br><em>Consultation Privée</em></h2>
+    <p style="font-size:17px;line-height:1.8;color:rgba(247,240,220,.65);max-width:520px;margin:16px auto 0;font-style:italic;">Remplissez ce formulaire. L'un de nos experts vous contactera sous 24h pour organiser votre rendez-vous confidentiel.</p>
+    <form class="contact-form" onsubmit="handleForm(event)">
+      <div class="fg"><label>PRÉNOM &amp; NOM</label><input type="text" placeholder="Votre nom complet"/></div>
+      <div class="fg"><label>TÉLÉPHONE</label><input type="tel" placeholder="+225 07 XX XX XX XX"/></div>
+      <div class="fg"><label>EMAIL</label><input type="email" placeholder="votre@email.com"/></div>
+      <div class="fg"><label>CENTRE D'INTÉRÊT</label>
+        <select>
+          <option value="">Sélectionner...</option>
+          <option>Or en Lingots</option>
+          <option>Diamants Certifiés GIA</option>
+          <option>Bijoux en Or</option>
+          <option>Or d'Investissement</option>
+          <option>Expertise / Rachat</option>
+          <option>Pierres Précieuses</option>
+        </select>
+      </div>
+      <div class="fg full"><label>VOTRE MESSAGE</label><textarea rows="4" placeholder="Décrivez votre projet ou votre besoin..."></textarea></div>
+      <button type="submit" class="form-btn">ENVOYER MA DEMANDE CONFIDENTIELLE →</button>
+    </form>
+    <div class="contact-info-row">
+      <div class="ci"><span class="ci-icon">📍</span><span class="ci-label">ADRESSE</span><span class="ci-val">Paris — France</span></div>
+      <div class="ci"><span class="ci-icon">📱</span><span class="ci-label">TÉLÉPHONE</span><span class="ci-val">+33 07 XX XX XX XX</span></div>
+      <div class="ci"><span class="ci-icon">🕐</span><span class="ci-label">HORAIRES</span><span class="ci-val">Lun–Sam &nbsp;|&nbsp; 09h – 18h</span></div>
+      <div class="ci"><span class="ci-icon">✉</span><span class="ci-label">EMAIL</span><span class="ci-val">contact@damien-gold-consulting.com</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo"></div>
+  <p class="footer-copy">© 2025 Damien Gold & Diamond · Or &amp; Diamants de Prestige </p>
+  <div class="footer-links">
+    <a href="#" class="footer-link">f</a>
+    <a href="#" class="footer-link">in</a>
+    <a href="#" class="footer-link">✉</a>
+  </div>
+</footer>
+
+<script>
+  // Custom cursor
+  const cur=document.getElementById('cur'),curR=document.getElementById('curR');
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+  (function loop(){
+    rx+=(mx-rx)*.14;ry+=(my-ry)*.14;
+    cur.style.left=mx+'px';cur.style.top=my+'px';
+    curR.style.left=rx+'px';curR.style.top=ry+'px';
+    requestAnimationFrame(loop);
+  })();
+  document.querySelectorAll('a,button,.coll-card,.testi').forEach(el=>{
+    el.addEventListener('mouseenter',()=>{cur.style.transform='translate(-50%,-50%) scale(2.2)';curR.style.transform='translate(-50%,-50%) scale(1.6)';});
+    el.addEventListener('mouseleave',()=>{cur.style.transform='translate(-50%,-50%) scale(1)';curR.style.transform='translate(-50%,-50%) scale(1)';});
+  });
+
+  // Scroll reveal
+  const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');}),{threshold:.1});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+  // Counter animation
+  const cObs=new IntersectionObserver(es=>es.forEach(e=>{
+    if(e.isIntersecting){
+      const t=+e.target.dataset.t;let s=null;
+      const step=ts=>{if(!s)s=ts;const p=Math.min((ts-s)/2000,1),ease=1-Math.pow(1-p,3);e.target.textContent=Math.floor(ease*t).toLocaleString('fr');if(p<1)requestAnimationFrame(step);else e.target.textContent=t.toLocaleString('fr');};
+      requestAnimationFrame(step);cObs.unobserve(e.target);
     }
-    animateCursor();
-    document.querySelectorAll('a, button, .product-card').forEach(el => {
-      el.addEventListener('mouseenter', () => { cursor.style.transform = 'translate(-50%,-50%) scale(2)'; cursorRing.style.transform = 'translate(-50%,-50%) scale(1.5)'; });
-      el.addEventListener('mouseleave', () => { cursor.style.transform = 'translate(-50%,-50%) scale(1)'; cursorRing.style.transform = 'translate(-50%,-50%) scale(1)'; });
-    });
+  }),{threshold:.5});
+  document.querySelectorAll('.stat-n[data-t]').forEach(el=>cObs.observe(el));
 
-    // Floating gems
-    const gemsContainer = document.getElementById('gems');
-    const gemTypes = ['✦', '◆', '⬦', '◇', '⋄'];
-    for (let i = 0; i < 15; i++) {
-      const gem = document.createElement('div');
-      gem.className = 'gem';
-      gem.textContent = gemTypes[Math.floor(Math.random() * gemTypes.length)];
-      gem.style.left = Math.random() * 100 + '%';
-      gem.style.fontSize = (8 + Math.random() * 16) + 'px';
-      gem.style.animationDuration = (15 + Math.random() * 20) + 's';
-      gem.style.animationDelay = (Math.random() * 20) + 's';
-      gem.style.color = Math.random() > 0.5 ? '#C9A84C' : '#D4F1FF';
-      gemsContainer.appendChild(gem);
-    }
+  // Form
+  function handleForm(e){
+    e.preventDefault();
+    const btn=e.target.querySelector('.form-btn');
+    btn.textContent='✓ DEMANDE REÇUE — NOUS VOUS CONTACTERONS SOUS 24H';
+    btn.style.cssText='background:transparent;border:1px solid rgba(201,168,76,.4);color:#C9A84C;font-family:Cinzel,serif;font-size:11px;letter-spacing:.2em;padding:18px;cursor:none;grid-column:1/-1;';
+  }
 
-    // Scroll reveal
-    const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-    }, { threshold: 0.12 });
-    reveals.forEach(el => observer.observe(el));
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth'});});
+  });
 
-    // Counter animation
-    function animateCounter(el, target) {
-      let start = 0;
-      const duration = 2000;
-      const step = timestamp => {
-        if (!start) start = timestamp;
-        const progress = Math.min((timestamp - start) / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 3);
-        el.textContent = Math.floor(eased * target).toLocaleString('fr');
-        if (progress < 1) requestAnimationFrame(step);
-        else el.textContent = target.toLocaleString('fr');
-      };
-      requestAnimationFrame(step);
-    }
-    const statsObserver = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          const target = +e.target.dataset.target;
-          animateCounter(e.target, target);
-          statsObserver.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.5 });
-    document.querySelectorAll('.stat-number[data-target]').forEach(el => statsObserver.observe(el));
-
-    // Form submit
-    function handleSubmit(e) {
-      e.preventDefault();
-      const btn = e.target.querySelector('.form-submit');
-      btn.textContent = '✓ MESSAGE ENVOYÉ — NOUS VOUS CONTACTERONS BIENTÔT';
-      btn.style.background = 'rgba(201,168,76,0.2)';
-      btn.style.color = '#C9A84C';
-      btn.style.border = '1px solid rgba(201,168,76,0.4)';
-    }
-
-    // Smooth scroll
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click', e => {
-        e.preventDefault();
-        const target = document.querySelector(a.getAttribute('href'));
-        if (target) target.scrollIntoView({ behavior: 'smooth' });
-      });
-    });
-  </script>
+  // Parallax img-break
+  const ib=document.querySelector('.img-break img');
+  window.addEventListener('scroll',()=>{
+    if(!ib)return;
+    const r=ib.closest('.img-break').getBoundingClientRect();
+    const prog=-(r.top/(window.innerHeight+r.height));
+    ib.style.transform=`translateY(${prog*28}%)`;
+  },{passive:true});
+</script>
 </body>
 </html>
