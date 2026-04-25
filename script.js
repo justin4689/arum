@@ -141,7 +141,7 @@
       'ci.hours':"HORAIRES",
       'ci.hours.val':"Lun–Sam&nbsp;|&nbsp;09h – 18h",
       'ci.email':"EMAIL",
-      'footer.copy':"© 2025 Damien Gold & Diamond · Or & Diamants de Prestige",
+      'footer.copy':"Damien Gold & Diamond · Or & Diamants de Prestige",
     },
     en:{
       'nav.about':"About",
@@ -202,7 +202,7 @@
       'ci.hours':"HOURS",
       'ci.hours.val':"Mon–Sat&nbsp;|&nbsp;9am – 6pm",
       'ci.email':"EMAIL",
-      'footer.copy':"© 2025 Damien Gold & Diamond · Gold & Prestigious Diamonds",
+      'footer.copy':"Damien Gold & Diamond · Gold & Prestigious Diamonds",
     },
     de:{
       'nav.about':"Über uns",
@@ -263,7 +263,7 @@
       'ci.hours':"ÖFFNUNGSZEITEN",
       'ci.hours.val':"Mo–Sa&nbsp;|&nbsp;9–18 Uhr",
       'ci.email':"E-MAIL",
-      'footer.copy':"© 2025 Damien Gold & Diamond · Gold & Diamanten von Prestige",
+      'footer.copy':"Damien Gold & Diamond · Gold & Diamanten von Prestige",
     },
     it:{
       'nav.about':"Chi siamo",
@@ -324,7 +324,7 @@
       'ci.hours':"ORARI",
       'ci.hours.val':"Lun–Sab&nbsp;|&nbsp;9h – 18h",
       'ci.email':"EMAIL",
-      'footer.copy':"© 2025 Damien Gold & Diamond · Oro & Diamanti di Prestigio",
+      'footer.copy':"Damien Gold & Diamond · Oro & Diamanti di Prestigio",
     },
     es:{
       'nav.about':"Sobre nosotros",
@@ -385,7 +385,7 @@
       'ci.hours':"HORARIO",
       'ci.hours.val':"Lun–Sáb&nbsp;|&nbsp;9h – 18h",
       'ci.email':"CORREO",
-      'footer.copy':"© 2025 Damien Gold & Diamond · Oro & Diamantes de Prestigio",
+      'footer.copy':"Damien Gold & Diamond · Oro & Diamantes de Prestigio",
     },
   };
 
@@ -434,5 +434,7 @@
     const browser=(navigator.language || navigator.userLanguage || 'fr').substring(0,2).toLowerCase();
     return i18n[browser] ? browser : 'fr';
   }
+
+  document.getElementById('footer-year').textContent = new Date().getFullYear();
 
   applyLang(detectLang());
