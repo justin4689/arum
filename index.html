@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="style.css">
   <title>Damien Gold & Diamond</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600;900&display=swap" rel="stylesheet"/>
-  
 </head>
 <body>
 
@@ -17,15 +16,27 @@
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">Damien Gold & Diamond</a>
-  <ul class="nav-links">
-    <li><a href="#collection">À propos</a></li>
-    <li><a href="#about">Nos Services</a></li>
-    <li><a href="#galerie">Notre Expertise</a></li>
-    <li><a href="#temoignages">Nos Valeurs</a></li>
-    <li><a href="#contact">Contact</a></li>
+  <a href="/" class="nav-logo">Damien Gold & Diamond</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about" data-i18n="nav.about">À propos</a></li>
+    <li><a href="#collection" data-i18n="nav.services">Nos Services</a></li>
+    
+    <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
   </ul>
-  <a href="#contact" class="nav-btn">NOUS CONTACTER</a>
+  <div class="nav-actions">
+   
+    <a href="#contact" class="nav-btn" data-i18n="nav.btn">NOUS CONTACTER</a>
+    <select class="lang-select" id="langSelect" aria-label="Langue">
+      <option value="fr">🇫🇷 FR</option>
+      <option value="en">🇬🇧 EN</option>
+      <option value="de">🇩🇪 DE</option>
+      <option value="es">🇪🇸 ES</option>
+      <option value="it">🇮🇹 IT</option>
+    </select>
+    <button class="nav-hamburger" id="navToggle" aria-label="Ouvrir le menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -34,131 +45,105 @@
   <div class="hero-overlay"></div>
   <div class="hero-glow"></div>
   <div class="hero-content">
-    <span class="eyebrow">Excellence · Authenticité · Prestige </span>
+    <span class="eyebrow" data-i18n="hero.eyebrow">Excellence · Authenticité · Prestige </span>
     <h1 class="hero-title">Damien Gold & Diamond</h1>
-    <p class="hero-sub">Plus de 15 ans d’expérience dans l’expertise, le caratage et le commerce international d’or et de diamants.</p>
+    <p class="hero-sub" data-i18n="hero.sub">Plus de 15 ans d'expérience dans l'expertise, le caratage et le commerce international d'or et de diamants.</p>
     <div class="hero-ctas">
-      <a href="#collection" class="btn-gold">Demander une expertise</a>
-      <a href="#contact" class="btn-outline">Nous contacter</a>
+      <a href="#collection" class="btn-gold" data-i18n="hero.cta1">Demander une expertise</a>
+      <a href="#contact" class="btn-outline" data-i18n="hero.cta2">Nous contacter</a>
     </div>
   </div>
   <div class="scroll-hint">
-    <span>DÉFILER</span>
+    <span data-i18n="hero.scroll">DÉFILER</span>
     <div class="scroll-line"></div>
   </div>
 </section>
 
 <!-- STATS -->
 <div class="stats-band">
-  <div class="stat reveal"><span class="stat-n" data-t="15">0</span><span class="stat-l">ANS D'EXPERTISE</span></div>
-  <div class="stat reveal d1"><span class="stat-n" data-t="470">0</span><span class="stat-l">CLIENTS SATISFAITS</span></div>
-  <div class="stat reveal d2"><span class="stat-n" data-t="850">0</span><span class="stat-l">KG D'OR TRAITÉS</span></div>
-  <div class="stat reveal d3"><span class="stat-n" data-t="9000">0</span><span class="stat-l">CARATS DIAMANTS</span></div>
+  <div class="stat reveal"><span class="stat-n" data-t="15">0</span><span class="stat-l" data-i18n="stat.years">ANS D'EXPERTISE</span></div>
+  <div class="stat reveal d1"><span class="stat-n" data-t="470">0</span><span class="stat-l" data-i18n="stat.clients">CLIENTS SATISFAITS</span></div>
+  <div class="stat reveal d2"><span class="stat-n" data-t="850">0</span><span class="stat-l" data-i18n="stat.gold">KG D'OR TRAITÉS</span></div>
+  <div class="stat reveal d3"><span class="stat-n" data-t="9000">0</span><span class="stat-l" data-i18n="stat.carats">CARATS DIAMANTS</span></div>
 </div>
-
-
 
 <!-- ABOUT -->
 <section class="about" id="about">
   <div class="about-left">
-    <img src="assets/images/diamien.jpg"  walt="Diamien" width="900"/>
+    <img src="assets/images/damien.jpeg" alt="Damien" width="900"/>
     <div class="about-left-overlay"></div>
   </div>
   <div class="about-right">
-    <span class="sec-label">— Notre Maison —</span>
-    <h2 class="sec-title" style="font-size:clamp(26px,3vw,44px);text-align:left;margin-bottom:30px;">L’excellence au service<br>des <em>métaux précieux</em><br>et des pierres rares</h2>
-    <p class="about-text">Depuis plus de quinze ans, notre activité s’inscrit au cœur du secteur des métaux précieux et des pierres d’exception. Spécialisés dans l’expertise de bijoux, le caratage ainsi que le commerce international d’or et de diamants, nous mettons notre savoir-faire et notre expérience au service d’une clientèle exigeante.
-
-Chaque pièce confiée fait l’objet d’une analyse rigoureuse permettant d’en déterminer l’authenticité, la pureté et la valeur. Grâce à une expertise approfondie et à des méthodes de caratage précises, nous garantissons des évaluations fiables conformes aux standards internationaux du marché des pierres précieuses et des métaux nobles.
-
-Notre activité s’étend également au commerce international et aux opérations d’import-export d’or et de diamants. À travers un réseau de partenaires et de fournisseurs à l’international, nous facilitons des transactions sécurisées et confidentielles, tout en offrant une vision stratégique des opportunités du marché.
-
-Fondé sur la discrétion, la rigueur et l’excellence, notre engagement est d’accompagner chaque client avec professionnalisme dans l’expertise, l’acquisition, la valorisation et la commercialisation de biens précieux.</p>
-   
+    <span class="sec-label" data-i18n="about.label">— Notre Maison —</span>
+    <h2 class="sec-title" style="font-size:clamp(26px,3vw,44px);text-align:left;margin-bottom:30px;" data-i18n-html="about.title">L'excellence au service<br>des <em>métaux précieux</em><br>et des pierres rares</h2>
+    <p class="about-text" data-i18n-html="about.text">Depuis plus de quinze ans, notre activité s'inscrit au cœur du secteur des métaux précieux et des pierres d'exception. Spécialisés dans l'expertise de bijoux, le caratage ainsi que le commerce international d'or et de diamants, nous mettons notre savoir-faire et notre expérience au service d'une clientèle exigeante.<br><br>Chaque pièce confiée fait l'objet d'une analyse rigoureuse permettant d'en déterminer l'authenticité, la pureté et la valeur. Grâce à une expertise approfondie et à des méthodes de caratage précises, nous garantissons des évaluations fiables conformes aux standards internationaux du marché des pierres précieuses et des métaux nobles.<br><br>Notre activité s'étend également au commerce international et aux opérations d'import-export d'or et de diamants. À travers un réseau de partenaires et de fournisseurs à l'international, nous facilitons des transactions sécurisées et confidentielles, tout en offrant une vision stratégique des opportunités du marché.<br><br>Fondé sur la discrétion, la rigueur et l'excellence, notre engagement est d'accompagner chaque client avec professionnalisme dans l'expertise, l'acquisition, la valorisation et la commercialisation de biens précieux.</p>
     <div class="about-sig">
       <div class="about-sig-name">Marco Damien</div>
-      <div class="about-sig-role">FONDATEUR &amp; DIRECTEUR GÉNÉRAL · Damien Gold & Diamond</div>
+      <div class="about-sig-role" data-i18n="about.role">FONDATEUR &amp; DIRECTEUR GÉNÉRAL · Damien Gold & Diamond</div>
     </div>
   </div>
 </section>
 
-
-
-
-
-
 <!-- COLLECTION -->
 <section class="collection" id="collection">
   <div class="sec-header reveal">
-    <span class="sec-label">— Nos Services—</span>
-    <h2 class="sec-title">Métaux &amp; Pierres <em>d'Exception</em></h2>
+    <span class="sec-label" data-i18n="coll.label">— Nos Services —</span>
+    <h2 class="sec-title" data-i18n-html="coll.title">Métaux &amp; Pierres <em>d'Exception</em></h2>
     <div class="gold-bar"></div>
   </div>
   <div class="coll-grid">
     <div class="coll-card">
-  <img src="assets/images/bijoux.jpeg" width="70" alt="Expertise de bijoux"/>
-  <div class="coll-card-overlay">
-    <span class="coll-card-icon">🪙</span>
-    <div class="coll-card-name">EXPERTISE DE BIJOUX</div>
-    <p class="coll-card-desc">
-      Nous réalisons une expertise complète de vos bijoux afin d’en déterminer l’authenticité, l’état, la provenance et la valeur sur le marché. Chaque analyse est effectuée avec rigueur selon les standards professionnels.
-    </p>
-    <span class="coll-card-badge">DISPONIBLE</span>
-  </div>
-</div>
+      <img src="assets/images/bijoux.jpeg" width="70" alt="Expertise de bijoux"/>
+      <div class="coll-card-overlay">
+        <span class="coll-card-icon">🪙</span>
+        <div class="coll-card-name" data-i18n="card1.name">EXPERTISE DE BIJOUX</div>
+        <p class="coll-card-desc" data-i18n="card1.desc">Nous réalisons une expertise complète de vos bijoux afin d'en déterminer l'authenticité, l'état, la provenance et la valeur sur le marché. Chaque analyse est effectuée avec rigueur selon les standards professionnels.</p>
+        <span class="coll-card-badge" data-i18n="card1.badge">DISPONIBLE</span>
+      </div>
+    </div>
 
-<div class="coll-card reveal d1">
-  <img src="assets/images/caratage.jpg" width="70" alt="Caratage diamant"/>
-  <div class="coll-card-overlay">
-    <span class="coll-card-icon">💎</span>
-    <div class="coll-card-name">CARATAGE</div>
-    <p class="coll-card-desc">
-      Nous procédons au caratage précis de vos diamants et pierres précieuses afin d’évaluer leur pureté, leur poids et leur qualité. Nos méthodes respectent les normes internationales du secteur.
-    </p>
-    <span class="coll-card-badge">DISPONIBLE</span>
-  </div>
-</div>
+    <div class="coll-card reveal d1">
+      <img src="assets/images/caratage.jpg" width="70" alt="Caratage diamant"/>
+      <div class="coll-card-overlay">
+        <span class="coll-card-icon">💎</span>
+        <div class="coll-card-name" data-i18n="card2.name">CARATAGE</div>
+        <p class="coll-card-desc" data-i18n="card2.desc">Nous procédons au caratage précis de vos diamants et pierres précieuses afin d'évaluer leur pureté, leur poids et leur qualité. Nos méthodes respectent les normes internationales du secteur.</p>
+        <span class="coll-card-badge" data-i18n="card2.badge">DISPONIBLE</span>
+      </div>
+    </div>
 
-<div class="coll-card reveal d2">
-  <img src="assets/images/achatvente.jpg" width="70" alt="Achat vente or"/>
-  <div class="coll-card-overlay">
-    <span class="coll-card-icon">💍</span>
-    <div class="coll-card-name">ACHAT & VENTE</div>
-    <p class="coll-card-desc">
-      Nous accompagnons nos clients dans l’achat et la vente d’or, de diamants et de bijoux de valeur. Nous garantissons des transactions fiables, transparentes et adaptées aux conditions du marché.
-    </p>
-    <span class="coll-card-badge">SUR DEMANDE</span>
-  </div>
-</div>
+    <div class="coll-card reveal d2">
+      <img src="assets/images/achatvente.jpg" width="70" alt="Achat vente or"/>
+      <div class="coll-card-overlay">
+        <span class="coll-card-icon">💍</span>
+        <div class="coll-card-name" data-i18n="card3.name">ACHAT &amp; VENTE</div>
+        <p class="coll-card-desc" data-i18n="card3.desc">Nous accompagnons nos clients dans l'achat et la vente d'or, de diamants et de bijoux de valeur. Nous garantissons des transactions fiables, transparentes et adaptées aux conditions du marché.</p>
+        <span class="coll-card-badge" data-i18n="card3.badge">SUR DEMANDE</span>
+      </div>
+    </div>
 
-<div class="coll-card reveal">
-  <img src="assets/images/importexport.jpg" width="70" alt="Commerce international or"/>
-  <div class="coll-card-overlay">
-    <span class="coll-card-icon">📊</span>
-    <div class="coll-card-name">IMPORT - EXPORT</div>
-    <p class="coll-card-desc">
-      Grâce à notre réseau international, nous facilitons les opérations d’import-export d’or et de diamants en toute sécurité. Nous assurons un accompagnement stratégique et confidentiel pour chaque transaction.
-    </p>
-    <span class="coll-card-badge">SUR RDV</span>
-  </div>
-</div>
+    <div class="coll-card reveal">
+      <img src="assets/images/importexport.jpg" width="70" alt="Commerce international or"/>
+      <div class="coll-card-overlay">
+        <span class="coll-card-icon">📊</span>
+        <div class="coll-card-name" data-i18n="card4.name">IMPORT - EXPORT</div>
+        <p class="coll-card-desc" data-i18n="card4.desc">Grâce à notre réseau international, nous facilitons les opérations d'import-export d'or et de diamants en toute sécurité. Nous assurons un accompagnement stratégique et confidentiel pour chaque transaction.</p>
+        <span class="coll-card-badge" data-i18n="card4.badge">SUR RDV</span>
+      </div>
+    </div>
   </div>
 </section>
-
-
 
 <!-- IMAGE BREAK CITATION -->
 <div class="img-break">
   <img src="https://images.unsplash.com/photo-1607082349566-187342175e2f?w=1800&q=80" alt="Or fondu"/>
   <div class="img-break-overlay">
     <div class="img-break-quote reveal">
-      <blockquote>« L'or n'est pas seulement une matière précieuse —<br>c'est la mémoire du temps et la valeur de la confiance. »</blockquote>
+      <blockquote data-i18n-html="quote.text">« L'or n'est pas seulement une matière précieuse —<br>c'est la mémoire du temps et la valeur de la confiance. »</blockquote>
       <cite>— Damien Gold & Diamond</cite>
     </div>
   </div>
 </div>
-
-
 
 <!-- CONTACT -->
 <section class="contact" id="contact">
@@ -167,32 +152,32 @@ Fondé sur la discrétion, la rigueur et l’excellence, notre engagement est d�
     <div class="contact-bg-overlay"></div>
   </div>
   <div class="contact-inner reveal">
-    <span class="sec-label">— Prendre Contact —</span>
-    <h2 class="sec-title">Commençons Votre<br><em>Consultation Privée</em></h2>
-    <p style="font-size:17px;line-height:1.8;color:rgba(247,240,220,.65);max-width:520px;margin:16px auto 0;font-style:italic;">Remplissez ce formulaire. L'un de nos experts vous contactera sous 24h pour organiser votre rendez-vous confidentiel.</p>
+    <span class="sec-label" data-i18n="contact.label">— Prendre Contact —</span>
+    <h2 class="sec-title" data-i18n-html="contact.title">Commençons Votre<br><em>Consultation Privée</em></h2>
+    <p style="font-size:17px;line-height:1.8;color:rgba(247,240,220,.65);max-width:520px;margin:16px auto 0;font-style:italic;" data-i18n="contact.sub">Remplissez ce formulaire. L'un de nos experts vous contactera sous 24h pour organiser votre rendez-vous confidentiel.</p>
     <form class="contact-form" onsubmit="handleForm(event)">
-      <div class="fg"><label>PRÉNOM &amp; NOM</label><input type="text" placeholder="Votre nom complet"/></div>
-      <div class="fg"><label>TÉLÉPHONE</label><input type="tel" placeholder="+225 07 XX XX XX XX"/></div>
-      <div class="fg"><label>EMAIL</label><input type="email" placeholder="votre@email.com"/></div>
-      <div class="fg"><label>CENTRE D'INTÉRÊT</label>
+      <div class="fg"><label data-i18n="form.name">PRÉNOM &amp; NOM</label><input type="text" data-i18n-placeholder="form.ph.name" placeholder="Votre nom complet"/></div>
+      <div class="fg"><label data-i18n="form.phone">TÉLÉPHONE</label><input type="tel" placeholder="+33 07 XX XX XX XX"/></div>
+      <div class="fg"><label data-i18n="form.email">EMAIL</label><input type="email" data-i18n-placeholder="form.ph.email" placeholder="votre@email.com"/></div>
+      <div class="fg"><label data-i18n="form.interest">CENTRE D'INTÉRÊT</label>
         <select>
-          <option value="">Sélectionner...</option>
-          <option>Or en Lingots</option>
-          <option>Diamants Certifiés GIA</option>
-          <option>Bijoux en Or</option>
-          <option>Or d'Investissement</option>
-          <option>Expertise / Rachat</option>
-          <option>Pierres Précieuses</option>
+          <option value="" data-i18n="form.select.default">Sélectionner...</option>
+          <option data-i18n="form.select.opt1">Or en Lingots</option>
+          <option data-i18n="form.select.opt2">Diamants Certifiés GIA</option>
+          <option data-i18n="form.select.opt3">Bijoux en Or</option>
+          <option data-i18n="form.select.opt4">Or d'Investissement</option>
+          <option data-i18n="form.select.opt5">Expertise / Rachat</option>
+          <option data-i18n="form.select.opt6">Pierres Précieuses</option>
         </select>
       </div>
-      <div class="fg full"><label>VOTRE MESSAGE</label><textarea rows="4" placeholder="Décrivez votre projet ou votre besoin..."></textarea></div>
-      <button type="submit" class="form-btn">ENVOYER MA DEMANDE CONFIDENTIELLE →</button>
+      <div class="fg full"><label data-i18n="form.message">VOTRE MESSAGE</label><textarea rows="4" data-i18n-placeholder="form.ph.message" placeholder="Décrivez votre projet ou votre besoin..."></textarea></div>
+      <button type="submit" class="form-btn" data-i18n="form.btn">ENVOYER MA DEMANDE CONFIDENTIELLE →</button>
     </form>
     <div class="contact-info-row">
-      <div class="ci"><span class="ci-icon">📍</span><span class="ci-label">ADRESSE</span><span class="ci-val">Paris — France</span></div>
-      <div class="ci"><span class="ci-icon">📱</span><span class="ci-label">TÉLÉPHONE</span><span class="ci-val">+33 07 XX XX XX XX</span></div>
-      <div class="ci"><span class="ci-icon">🕐</span><span class="ci-label">HORAIRES</span><span class="ci-val">Lun–Sam &nbsp;|&nbsp; 09h – 18h</span></div>
-      <div class="ci"><span class="ci-icon">✉</span><span class="ci-label">EMAIL</span><span class="ci-val">contact@damien-gold-consulting.com</span></div>
+      <div class="ci"><span class="ci-icon">📍</span><span class="ci-label" data-i18n="ci.addr">ADRESSE</span><span class="ci-val">Paris — France</span></div>
+      <div class="ci"><span class="ci-icon">📱</span><span class="ci-label" data-i18n="ci.phone">TÉLÉPHONE</span><span class="ci-val">+33 07 XX XX XX XX</span></div>
+      <div class="ci"><span class="ci-icon">🕐</span><span class="ci-label" data-i18n="ci.hours">HORAIRES</span><span class="ci-val" data-i18n-html="ci.hours.val">Lun–Sam &nbsp;|&nbsp; 09h – 18h</span></div>
+      <div class="ci"><span class="ci-icon">✉</span><span class="ci-label" data-i18n="ci.email">EMAIL</span><span class="ci-val">contact@damien-gold-consulting.com</span></div>
     </div>
   </div>
 </section>
@@ -200,7 +185,7 @@ Fondé sur la discrétion, la rigueur et l’excellence, notre engagement est d�
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo"></div>
-  <p class="footer-copy">© 2025 Damien Gold & Diamond · Or &amp; Diamants de Prestige </p>
+  <p class="footer-copy" data-i18n="footer.copy">© 2025 Damien Gold & Diamond · Or &amp; Diamants de Prestige</p>
   <div class="footer-links">
     <a href="#" class="footer-link">f</a>
     <a href="#" class="footer-link">in</a>
@@ -208,7 +193,6 @@ Fondé sur la discrétion, la rigueur et l’excellence, notre engagement est d�
   </div>
 </footer>
 
- <script
- src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
